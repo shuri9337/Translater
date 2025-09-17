@@ -17,22 +17,23 @@
 
         body {
             font-family: 'Ownglyph_ParkDaHyun', sans-serif;
-            background: linear-gradient(to bottom right, #a5b4fc, #60a5fa, #3b82f6);
-            color: #1e40af;
+            background: linear-gradient(to bottom right, #f87171, #60a5fa, #facc15);
+            color: #4c2c00;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 1rem;
             position: relative;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 768px;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 2rem;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             padding: 2rem;
@@ -42,11 +43,57 @@
         .header {
             font-size: 2.5rem;
             font-weight: normal;
-            color: #1c5085;
+            color: #312e81;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
+        .character-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            gap: 1rem;
+        }
+
+        .character-bubble {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 1.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 1.125rem;
+            color: #312e81;
+            position: relative;
+            max-width: 60%;
+            text-align: left;
+        }
+
+        .character-bubble::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: rgba(255, 255, 255, 0.7);
+            border-left: 0;
+            top: 50%;
+            left: -10px;
+            transform: translateY(-50%);
+        }
+
+        .character {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #facc15;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         .class-selection {
             display: flex;
             justify-content: center;
@@ -61,16 +108,16 @@
             background-color: rgba(255, 255, 255, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 1.125rem;
-            color: #1c5085;
+            color: #312e81;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .class-btn.active {
-            background-color: #3b82f6;
+            background-color: #60a5fa;
             color: white;
-            border-color: #3b82f6;
+            border-color: #60a5fa;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
@@ -83,7 +130,7 @@
         .translator-title {
             font-size: 2rem;
             font-weight: normal;
-            color: #1c5085;
+            color: #312e81;
             margin-bottom: 1rem;
         }
 
@@ -98,28 +145,28 @@
             flex: 1;
             padding: 0.75rem 1rem;
             border-radius: 0.75rem;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.3);
             font-size: 1rem;
-            color: #1e40af;
+            color: #312e81;
             font-family: 'Ownglyph_ParkDaHyun', sans-serif;
             outline: none;
             transition: all 0.2s ease;
         }
 
         #text-input::placeholder {
-            color: #a5b4fc;
+            color: #d1d5db;
         }
 
         #text-input:focus {
-            background-color: rgba(255, 255, 255, 0.7);
-            border-color: #3b82f6;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-color: #60a5fa;
         }
 
         #translate-button {
             padding: 0.75rem 1.5rem;
             border-radius: 0.75rem;
-            background-color: #3b82f6;
+            background-color: #60a5fa;
             color: white;
             font-weight: normal;
             cursor: pointer;
@@ -139,7 +186,7 @@
         
         .loading-spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #3b82f6;
+            border-top: 4px solid #60a5fa;
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -154,11 +201,11 @@
         #translation-result {
             padding: 1rem;
             border-radius: 0.75rem;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             min-height: 4rem;
-            color: #0c4a6e;
+            color: #312e81;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -174,7 +221,7 @@
         .history-title {
             font-size: 2rem;
             font-weight: normal;
-            color: #1c5085;
+            color: #312e81;
             margin-bottom: 1rem;
         }
 
@@ -185,7 +232,7 @@
         }
 
         .history-item {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 0.75rem;
@@ -198,12 +245,12 @@
         }
 
         .history-item .original {
-            color: #3b82f6;
+            color: #60a5fa;
             font-weight: bold;
         }
         
         .history-item .translation {
-            color: #1c5085;
+            color: #312e81;
             font-size: 1rem;
         }
 
@@ -233,11 +280,16 @@
     <div class="header">반별 영어 번역기</div>
     <div class="character-container">
         <div class="character">
-            😄
+            🌻
+        </div>
+        <div class="character">
+            🦋
+        </div>
+        <div class="character">
+            ☀️
         </div>
         <div class="character-bubble">
             안녕! 네가 속한 반을 선택하고 영어 공부를 시작해 봐!
-            
         </div>
     </div>
     
@@ -269,21 +321,14 @@
     </div>
 </div>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, collection, onSnapshot, addDoc, query, where, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+<script>
+    // 번역 기록을 저장할 로컬 객체
+    let history = {};
+    for (let i = 1; i <= 6; i++) {
+        history[i] = [];
+    }
 
-    // Firebase 설정 변수 (캔버스 환경에서 자동 제공)
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
-    let db;
-    let auth;
-    let userId;
     let currentClass = '1';
-    let unsubscribeFromHistory = null;
 
     // UI 요소
     const classButtons = document.querySelectorAll('.class-btn');
@@ -291,106 +336,51 @@
     const translateButton = document.getElementById('translate-button');
     const translationResult = document.getElementById('translation-result');
     const historyList = document.getElementById('history-list');
+    
+    // 번역 기록 표시 함수
+    function updateHistoryDisplay(classId) {
+        historyList.innerHTML = '';
+        const classHistory = history[classId] || [];
 
-    // 앱 초기화 및 인증
-    async function initializeAppAndAuth() {
-        try {
-            const app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
-            db = getFirestore(app);
-
-            if (initialAuthToken) {
-                await signInWithCustomToken(auth, initialAuthToken);
-            } else {
-                await signInAnonymously(auth);
-            }
-            userId = auth.currentUser.uid;
-            console.log("Firebase initialized and authenticated successfully.");
-            
-            loadClassHistory(currentClass);
-
-        } catch (error) {
-            console.error("Firebase initialization or authentication failed:", error);
-            translationResult.textContent = "오류: Firebase 초기화 실패. 콘솔을 확인해 주세요.";
-        }
-    }
-
-    // 번역 기록 불러오기
-    function loadClassHistory(classId) {
-        if (unsubscribeFromHistory) {
-            unsubscribeFromHistory();
+        if (classHistory.length === 0) {
+            historyList.innerHTML = '<li class="text-gray-500">아직 찾아본 단어가 없습니다.</li>';
+            return;
         }
 
-        const historyRef = collection(db, `artifacts/${appId}/users/${userId}/translations`);
-        const q = query(historyRef, where("class", "==", classId));
-        
-        unsubscribeFromHistory = onSnapshot(q, (snapshot) => {
-            historyList.innerHTML = '';
-            if (snapshot.empty) {
-                historyList.innerHTML = '<li class="text-gray-500">아직 찾아본 단어가 없습니다.</li>';
-                return;
-            }
-            
-            const history = [];
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                history.push(data);
-            });
+        // 최신순으로 정렬
+        const sortedHistory = [...classHistory].sort((a, b) => b.timestamp - a.timestamp);
 
-            // 클라이언트 측에서 시간순으로 정렬
-            history.sort((a, b) => b.timestamp - a.timestamp);
-
-            history.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'history-item';
-                li.innerHTML = `
-                    <div class="original">${item.originalText}</div>
-                    <div class="translation">${item.translatedText}</div>
-                `;
-                historyList.appendChild(li);
-            });
-        }, (error) => {
-            console.error("Failed to load history:", error);
-            historyList.innerHTML = '<li class="text-red-500">기록을 불러오는 중 오류가 발생했습니다.</li>';
+        sortedHistory.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'history-item';
+            li.innerHTML = `
+                <div class="original">${item.originalText}</div>
+                <div class="translation">${item.translatedText}</div>
+            `;
+            historyList.appendChild(li);
         });
     }
 
-    // 번역 함수
+    // 번역 함수 (간단한 단어장으로 시뮬레이션)
     async function translateText(text) {
-        const payload = {
-            contents: [{ parts: [{ text: `Translate the following text into either Korean or English, whichever is the opposite language of the input. Input: ${text}` }] }],
-            tools: [{ "google_search": {} }],
+        const translations = {
+            "hello": "안녕하세요",
+            "world": "세상",
+            "apple": "사과",
+            "orange": "오렌지",
+            "book": "책",
+            "school": "학교",
+            "class": "반",
+            "friend": "친구",
+            "study": "공부",
+            "today": "오늘"
         };
-
-        const apiKey = ""; 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-        try {
-            let response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) {
-                if (response.status === 429) {
-                    console.error("Too many requests. Retrying with exponential backoff.");
-                    // In a real app, implement a retry mechanism.
-                }
-                throw new Error(`API error: ${response.statusText}`);
-            }
-
-            const result = await response.json();
-            const candidate = result.candidates?.[0];
-            if (!candidate || !candidate.content?.parts?.[0]?.text) {
-                throw new Error("Translation failed.");
-            }
-            return candidate.content.parts[0].text;
-
-        } catch (error) {
-            console.error("Translation API call failed:", error);
-            return "번역 오류: 다시 시도해 주세요.";
-        }
+        const lowerCaseText = text.toLowerCase();
+        
+        // 1초 지연 시뮬레이션
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        return translations[lowerCaseText] || "번역 결과를 찾을 수 없습니다.";
     }
 
     // 이벤트 리스너
@@ -399,7 +389,7 @@
             classButtons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             currentClass = event.target.dataset.class;
-            loadClassHistory(currentClass);
+            updateHistoryDisplay(currentClass);
         });
     });
 
@@ -419,25 +409,29 @@
             translationResult.textContent = translatedText;
 
             // 번역 기록 저장
-            const historyRef = collection(db, `artifacts/${appId}/users/${userId}/translations`);
-            await addDoc(historyRef, {
-                class: currentClass,
+            if (!history[currentClass]) {
+                history[currentClass] = [];
+            }
+            history[currentClass].push({
                 originalText: inputText,
                 translatedText: translatedText,
                 timestamp: Date.now()
             });
 
+            // 기록 UI 업데이트
+            updateHistoryDisplay(currentClass);
+
         } catch (error) {
-            console.error("Failed to translate or save:", error);
-            translationResult.textContent = "번역 및 저장에 실패했습니다.";
+            console.error("Failed to translate:", error);
+            translationResult.textContent = "번역에 실패했습니다.";
         } finally {
             translateButton.disabled = false;
             translateButton.innerHTML = originalButtonText;
         }
     });
 
-    // 앱 시작
-    initializeAppAndAuth();
+    // 앱 시작 시 초기 기록 표시
+    updateHistoryDisplay(currentClass);
 </script>
 
 </body>
